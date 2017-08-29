@@ -58,6 +58,6 @@ typings/
 .env
 
 #.idea folder
-*.iwl
+*.iws
 */workspace.xml
 */tasks.xml
