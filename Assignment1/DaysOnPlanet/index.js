@@ -6,6 +6,7 @@ var nd = require("./numdays.js");
 var app = express();
 app.use(body_parser.urlencoded({extended: false}));
 
+app.use("/", express.static(__dirname));
 app.use("/form", express.static(__dirname+"/assets/form.html"));
 
 app.post("/submit", function(req, res) {
