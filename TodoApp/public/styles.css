@@ -1,0 +1,15 @@
+/*selector and descriptor*/
+
+div.todoStatusACTIVE{
+    color: blue;
+}
+
+div.todoStatusCOMPLETE{
+    color: green;
+    text-decoration: line-through;
+}
+
+div.todoStatusDELETED{
+    color: red;
+    text-decoration: line-through;
+}

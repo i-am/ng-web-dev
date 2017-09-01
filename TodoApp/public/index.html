@@ -2,14 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles.css">
     <title>Todo App</title>
 </head>
 <body>
-My todo list <br>
+<h1>My todo list</h1> <br>
 
+<!--<button value="Get todo" onclick="GetTodoAJAX()">Get Todo</button><br>-->
+<h2>Active Todos</h2>
+<div id = "active_todo_list_div"></div><br>
 
-<button value="Get todo" onclick="GetTodoAJAX()">Get Todo</button><br>
-<div id = "todo_list_div"></div>
+<input type="text" id="new_todo_title" placeholder="Enter todo title">
+<button value="Add todo" onclick="AddTodoAJAX()">Add Todo</button><br>
+<h2>Completed Todos</h2>
+<div id = "complete_todo_list_div"></div><br>
+<h2>Deleted Todos</h2>
+<div id = "deleted_todo_list_div"></div><br>
+
 <script src="script.js"></script>
 </body>
 </html>

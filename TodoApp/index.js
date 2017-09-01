@@ -31,20 +31,22 @@ app.delete("/api/todos/:id", function(req, res) {
 
 //add
 app.post("/api/todos", function(req, res) {
-    var data = req.body;
-    if(!data)
+    var todo_title = req.body.todo_title;
+    if(!todo_title)
     {
         res.status(400).json("Invalid todo");
     }
     else
     {
-        todos_db.todos[todos_db.next_todo_id++] = {title:data.title, status:todos_db.StatusEnums.ACTIVE};
+        todos_db.todos[todos_db.next_todo_id++] =   {   title:todo_title,
+                                                        status:todos_db.StatusEnums.ACTIVE
+                                                    };
         res.json(todos_db.todos);
     }
 });
 
 //complete
-app.put("/api/:id", function(req, res) {
+app.put("/api/todos/:id", function(req, res) {
     var mod_id = req.params.id;
     var todo = todos_db.todos[mod_id];
 
@@ -54,75 +56,79 @@ app.put("/api/:id", function(req, res) {
     }
     else
     {
-        todo.status = todos_db.StatusEnums.COMPLETE;
+        if(todo.status === "ACTIVE")
+            todo.status = todos_db.StatusEnums.COMPLETE;
+        else todo.status = todos_db.StatusEnums.ACTIVE;
         res.json(todos_db.todos);
     }
 });
 
-//easier complete
-app.put("/api/todos/complete/:id", function(req, res) {
-    var mod_id = req.params.id;
-    var todo = todos_db.todos[mod_id];
+app.listen(4000);
 
-    if(!todo)
-    {
-        res.status(400).json("Todo does not exist");
-    }
-    else
-    {
-        todo.status = todos_db.StatusEnums.COMPLETE;
-        res.json(todos_db.todos);
-    }
-});
+// //easier complete
+// app.put("/api/todos/complete/:id", function(req, res) {
+//     var mod_id = req.params.id;
+//     var todo = todos_db.todos[mod_id];
+//
+//     if(!todo)
+//     {
+//         res.status(400).json("Todo does not exist");
+//     }
+//     else
+//     {
+//         todo.status = todos_db.StatusEnums.COMPLETE;
+//         res.json(todos_db.todos);
+//     }
+// });
+//
+// //easier active
+// app.put("/api/todos/active/:id", function(req, res) {
+//     var mod_id = req.params.id;
+//     var todo = todos_db.todos[mod_id];
+//
+//     if(!todo)
+//     {
+//         res.status(400).json("Todo does not exist");
+//     }
+//     else
+//     {
+//         todo.status = todos_db.StatusEnums.ACTIVE;
+//         res.json(todos_db.todos);
+//     }
+// });
+//
+//
+// app.get("/api/todos/active", function(req, res) {
+//
+//     var active = new Array();
+//     //var ind = 0;
+//     for(var i=1; i<todos_db.next_todo_id; i++) {
+//         if (todos_db.todos[i].status === todos_db.StatusEnums.ACTIVE) {
+//             active.push(todos_db.todos[i]);
+//         }
+//     }
+//     res.json(active);
+// });
+//
+// app.get("/api/todos/complete", function(req, res) {
+//
+//     var complete = new Array();
+//     for(var i=1; i<todos_db.next_todo_id; i++) {
+//         if (todos_db.todos[i].status === todos_db.StatusEnums.COMPLETE) {
+//             complete.push(todos_db.todos[i]);
+//         }
+//     }
+//     res.json(complete);
+// });
+//
+// app.get("/api/todos/deleted", function(req, res) {
+//
+//     var del = new Array();
+//     for(var i=1; i<todos_db.next_todo_id; i++) {
+//         if (todos_db.todos[i].status === todos_db.StatusEnums.DELETED) {
+//             del.push(todos_db.todos[i]);
+//         }
+//     }
+//     res.json(del);
+// });
 
-//easier active
-app.put("/api/todos/active/:id", function(req, res) {
-    var mod_id = req.params.id;
-    var todo = todos_db.todos[mod_id];
-
-    if(!todo)
-    {
-        res.status(400).json("Todo does not exist");
-    }
-    else
-    {
-        todo.status = todos_db.StatusEnums.ACTIVE;
-        res.json(todos_db.todos);
-    }
-});
-
-
-app.get("/api/todos/active", function(req, res) {
-
-    var act = new Array();
-    //var ind = 0;
-    for(var i=1; i<todos_db.next_todo_id; i++) {
-        if (todos_db.todos[i].status === todos_db.StatusEnums.ACTIVE) {
-            act.push(todos_db.todos[i]);
-        }
-    }
-    res.json(act);
-});
-
-app.get("/api/todos/complete", function(req, res) {
-
-    var act = new Array();
-    for(var i=1; i<todos_db.next_todo_id; i++) {
-        if (todos_db.todos[i].status === todos_db.StatusEnums.COMPLETE) {
-            act.push(todos_db.todos[i]);
-        }
-    }
-    res.json(act);
-});
-
-app.get("/api/todos/deleted", function(req, res) {
-
-    var act = new Array();
-    for(var i=1; i<todos_db.next_todo_id; i++) {
-        if (todos_db.todos[i].status === todos_db.StatusEnums.DELETED) {
-            act.push(todos_db.todos[i]);
-        }
-    }
-    res.json(act);
-});
-app.listen(3000);

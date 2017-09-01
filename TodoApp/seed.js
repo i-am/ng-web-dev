@@ -5,9 +5,9 @@ var StatusEnums = {
 };
 
 var todos = {
-    1: {title: "learn javascript", status: StatusEnums.ACTIVE},
-    2: {title: "git tutorial", status: StatusEnums.ACTIVE},
-    3: {title: "Interactive git", status: StatusEnums.ACTIVE}
+    1: {title: "Learn Javascript", status: StatusEnums.ACTIVE},
+    2: {title: "Git Tutorial", status: StatusEnums.ACTIVE},
+    3: {title: "Interactive Git", status: StatusEnums.ACTIVE}
 };
 
 var next_todo_id = 4;
