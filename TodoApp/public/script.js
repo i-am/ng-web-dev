@@ -40,22 +40,22 @@ function show_todo_elements(todo_data_json) {
 
 function createTodoElement(key, todo) {
     var todo_element = document.createElement("div");
-    todo_element.innerHTML = todo.title;
+
     todo_element.setAttribute("data-id", key);
     todo_element.setAttribute("class", "todoStatus"+todo.status);
 
-    var complete_checkbox = document.createElement("input");
-    complete_checkbox.type = "checkbox";
-    complete_checkbox.setAttribute("onclick","completeTodoAJAX("+key+")");
-    if(todo.status === "COMPLETE")
-        complete_checkbox.checked = true;
-    todo_element.appendChild(complete_checkbox);
-
-    if(!(todo.status === "DELETED")) {
-        var delete_button = document.createElement("button");
-        delete_button.innerText = "x";
-        delete_button.setAttribute("onclick","deleteTodoAJAX("+key+")");
-        todo_element.appendChild(delete_button);
+    if(todo.status !== "DELETED") {
+        //checkbox
+        var complete_checkbox = document.createElement("input");
+        complete_checkbox.type = "checkbox";
+        complete_checkbox.setAttribute("onclick", "completeTodoAJAX(" + key + ")");
+        if (todo.status === "COMPLETE")
+            complete_checkbox.checked = true;
+        todo_element.appendChild(complete_checkbox);
+    }
+    todo_element.innerHTML += todo.title;
+    if(todo.status !== "DELETED") {
+        todo_element.innerHTML += "<button type = 'button' class = 'close' onclick='deleteTodoAJAX(\""+key+"\")'>&times;</button>;"
     }
 
     return todo_element;

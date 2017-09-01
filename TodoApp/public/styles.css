@@ -1,5 +1,9 @@
 /*selector and descriptor*/
 
+h1 {
+    background-color: lightgoldenrodyellow;
+}
+
 div.todoStatusACTIVE{
     color: blue;
 }
@@ -12,4 +16,9 @@ div.todoStatusCOMPLETE{
 div.todoStatusDELETED{
     color: red;
     text-decoration: line-through;
+}
+
+.close {
+    color: red;
+    opacity: 1;
 }
