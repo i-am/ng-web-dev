@@ -4,21 +4,46 @@ h1 {
     background-color: lightgoldenrodyellow;
 }
 
+.mydiv{
+    border-bottom: solid;
+    border-bottom-width: medium;
+    border-bottom-color: black;
+}
 div.todoStatusACTIVE{
+    height: 30px;
     color: blue;
+    font-size: 17px;
 }
 
 div.todoStatusCOMPLETE{
     color: green;
     text-decoration: line-through;
+    font-size: 17px;
+    height: 30px;
+
 }
 
 div.todoStatusDELETED{
     color: red;
     text-decoration: line-through;
+    font-size: 17px;
+    height: 30px;
 }
 
 .close {
+    color: red;
+    opacity: 1;
+}
+
+.completeCheckbox {
+
+    width: 18px;
+    height: 18px;
+    vertical-align:text-bottom;
+}
+
+.completeCheckbox:checked {
+    background-color: dodgerblue;
     color: red;
     opacity: 1;
 }

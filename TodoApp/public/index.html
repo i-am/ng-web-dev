@@ -13,18 +13,21 @@
 <div class="container">
     <h1>My Todo List</h1> <br>
 
-    <!--<button type = 'button' class = 'close' onclick='deleteTodoAJAX('+')'>&times;</button>-->
-
-    <!--<button value="Get todo" onclick="GetTodoAJAX()">Get Todo</button><br>-->
     <h2>Active Todos</h2>
-    <div id = "active_todo_list_div"></div><br>
+    <div class="mydiv" id = "active_todo_list_div"></div><br>
 
-    <input type="text" id="new_todo_title" placeholder="Enter todo title">
-    <button value="Add todo" onclick="AddTodoAJAX()">Add Todo</button><br>
+    <!--Add todo-->
+    <h2>Add Todo</h2>
+    <div class="mydiv">
+    <input type="text" id="new_todo_title" placeholder="Enter todo title" style="margin-bottom: 10px">
+    <button value="Add todo" onclick="AddTodoAJAX()">Add</button><br>
+    </div>
+
     <h2>Completed Todos</h2>
-    <div id = "complete_todo_list_div"></div><br>
+    <div class="mydiv" id = "complete_todo_list_div"></div><br>
+
     <h2>Deleted Todos</h2>
-    <div id = "deleted_todo_list_div"></div><br>
+    <div class="mydiv" id = "deleted_todo_list_div"></div><br>
 
 </div>
 

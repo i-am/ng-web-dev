@@ -48,15 +48,16 @@ function createTodoElement(key, todo) {
         //checkbox
         var complete_checkbox = document.createElement("input");
         complete_checkbox.type = "checkbox";
+        complete_checkbox.setAttribute("class", "completeCheckbox");
         complete_checkbox.setAttribute("onclick", "completeTodoAJAX(" + key + ")");
-        if (todo.status === "COMPLETE")
-            complete_checkbox.checked = true;
+        if (todo.status === "COMPLETE") {
+            complete_checkbox.setAttribute("checked", "true");
+        }
         todo_element.appendChild(complete_checkbox);
+        todo_element.innerHTML += "<button type = 'button' class = 'close' onclick='deleteTodoAJAX(\""+key+"\")'>&times;</button>"
+
     }
-    todo_element.innerHTML += todo.title;
-    if(todo.status !== "DELETED") {
-        todo_element.innerHTML += "<button type = 'button' class = 'close' onclick='deleteTodoAJAX(\""+key+"\")'>&times;</button>;"
-    }
+    todo_element.append(todo.title);
 
     return todo_element;
 }
